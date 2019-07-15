@@ -11,11 +11,9 @@
     "pages/card/add/add",
     "pages/card/item/item",
     "pages/card/detail/detail",
-    "pages/note/list",
     "pages/jf/jf",
     "pages/help/help",
-    "pages/logs/logs",
-    "pages/note/detail"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
