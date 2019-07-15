@@ -56,7 +56,7 @@ Page({
   // 我的积分
   gojifen: function () {
     wx.navigateTo({
-      url: '../jifen/list'
+      url: '../jf/jf'
     })
   },
 

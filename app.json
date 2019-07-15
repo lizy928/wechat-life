@@ -5,11 +5,17 @@
     "pages/user/user",
     "pages/bill/bill",
     "pages/index/index",
+    "pages/note/list/list",
+    "pages/note/add/add",
+    "pages/note/detail/detail",
     "pages/card/add/add",
     "pages/card/item/item",
     "pages/card/detail/detail",
+    "pages/note/list",
+    "pages/jf/jf",
     "pages/help/help",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/note/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,29 +23,33 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-"tabBar": {
-  "color": "#a9b7b7",
-  "selectedColor": "#11cd6e",
-  "borderStyle": "white",
-  "list": [
-    {
-      "selectedIconPath": "imges/jizhang.png",
-      "iconPath": "imges/jizhang.png",
-      "pagePath": "pages/mbook/mbook",
-      "text": "记账"
-    },
-    {
-      "selectedIconPath": "imges/user.png",
-      "iconPath": "imges/user.png",
-      "pagePath": "pages/user/user",
-      "text": "我的"
-    }
-  ]
-},
-
-"networkTimeout": {
-  "request": 10000
-},
-
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "imges/jizhang.png",
+        "iconPath": "imges/jizhang.png",
+        "pagePath": "pages/mbook/mbook",
+        "text": "记账"
+      },
+      {
+        "selectedIconPath": "imges/jizhang.png",
+        "iconPath": "imges/order.png",
+        "pagePath": "pages/mbook/mbook",
+        "text": "笔记"
+      },
+      {
+        "selectedIconPath": "imges/user.png",
+        "iconPath": "imges/user.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
   "sitemapLocation": "sitemap.json"
 }
