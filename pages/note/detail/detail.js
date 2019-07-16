@@ -13,6 +13,14 @@ Page({
    */
   onLoad: function (options) {
 
+    var obj = this;
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    console.log(options);
+    
+    var id = options.id;
+    console.log("id:"+id);
+
   },
 
   /**

@@ -35,7 +35,7 @@
       {
         "selectedIconPath": "imges/jizhang.png",
         "iconPath": "imges/order.png",
-        "pagePath": "pages/mbook/mbook",
+        "pagePath": "pages/note/list/list",
         "text": "笔记"
       },
       {

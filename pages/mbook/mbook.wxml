@@ -82,4 +82,5 @@
   <view class='addwater'>
     <image class='addimg' bindtap="addwater" src='/imges/addwater.png'></image>
   </view>
+  
 </view>

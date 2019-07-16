@@ -1,3 +1,28 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "笔记列表",
+  
+  "data":[
+    {
+      "content":"cfddsfesfesfe"
+    },
+    {
+      "content": "cfddsfesfesfe"
+    },
+    {
+      "content": "cfddsfesfesfe"
+    },
+    {
+      "content": "cfddsfesfesfe"
+    },
+    {
+      "content": "cfddsfesfesfe"
+    },
+    {
+      "content": "cfddsfesfesfe"
+    }
+
+
+  ]
+
 }
+
