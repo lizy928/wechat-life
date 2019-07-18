@@ -33,14 +33,14 @@ Page({
     //   url: '/pages/cards/addcard?id=0'
     // });
     wx.navigateTo({
-      url: '/pages/cards/carditem'
+      url: '/pages/card/add/add'
     });
   },
 
   // 卡片详情
   carddetail: function (e) {
     wx.navigateTo({
-      url: '/pages/cards/addcard?id=' + e.currentTarget.dataset.id + "&carditem=" + e.currentTarget.dataset.carditem
+      url: '/pages/card/add/add?id=' + e.currentTarget.dataset.id + "&carditem=" + e.currentTarget.dataset.carditem
     });
   },
 

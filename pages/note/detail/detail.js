@@ -1,74 +1,77 @@
-// pages/note/detail.js
-Page({
+// 笔记三要素： content（显示）, time（显示）, id（唯一标识）;
+// 新加： 三要素都更新，并且添加到storage中；
+// 编辑： 内容时间更新，id不变，修改storage中已存在项。
 
-  /**
-   * 页面的初始数据
-   */
+var timeFunc = require("../../utils/util.js");
+Page({
   data: {
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-    var obj = this;
-    // 显示顶部刷新图标  
-    wx.showNavigationBarLoading();
-    console.log(options);
-    
-    var id = options.id;
-    console.log("id:"+id);
-
+  onLoad: function (e) {
+    var id = e.id;
+    console.log(id);
+    if (id) {
+      initData(id, this);
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
+    alert('拉吧拉吧!有什么好拉的')
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  edit: function (e) {
+    var val = e.detail.value;
+    this.setData({
+      content: val
+    });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  cancle: function () {
+    wx.navigateBack();
+  },
+  save: function () {
+    var reg = /^\s*$/g;
+    if (this.data.content && !reg.test(this.data.content)) {
+      saveData(this);
+    }
+    wx.navigateBack();
   }
 })
+
+
+
+function initData(id, page) {
+  var lists = wx.getStorageSync('lists') || [];
+  lists.forEach(function (item, i) {
+    if (item.id == id) {
+      page.setData({
+        content: item.content,
+        time: timeFunc.formatTime(new Date()),
+        id: id,
+        isShow: false
+      })
+    }
+  })
+}
+
+function saveData(page) {
+  var lists = wx.getStorageSync('lists') || [];
+  var flag = true;
+  var index = -1;
+  lists.forEach(function (item, i) {
+    if (item.id == page.data.id) {
+      flag = false;
+      index = i;
+    }
+  })
+  if (flag) {
+    page.setData({
+      time: timeFunc.formatTime(new Date()),
+      id: Date.now()
+    });
+    lists.unshift(page.data);
+  } else {
+    lists[index].content = page.data.content;
+    lists[index].time = timeFunc.formatTime(new Date());
+    lists.unshift(lists[index]);
+    lists.splice(index + 1, 1);
+  }
+  wx.setStorageSync('lists', lists);
+}

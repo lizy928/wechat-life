@@ -8,9 +8,9 @@
     "pages/note/list/list",
     "pages/note/add/add",
     "pages/note/detail/detail",
+    "pages/card/detail/detail",
     "pages/card/add/add",
     "pages/card/item/item",
-    "pages/card/detail/detail",
     "pages/jf/jf",
     "pages/help/help",
     "pages/logs/logs"
