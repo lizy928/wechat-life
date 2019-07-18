@@ -1,19 +1,19 @@
 {
   "pages": [
     "pages/mbook/mbook",
-    "pages/mbook/water/add",
     "pages/user/user",
     "pages/bill/bill",
-    "pages/index/index",
-    "pages/note/list/list",
-    "pages/note/add/add",
-    "pages/note/detail/detail",
-    "pages/card/detail/detail",
-    "pages/card/add/add",
-    "pages/card/item/item",
-    "pages/jf/jf",
     "pages/help/help",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/jf/jf",
+    "pages/card/detail/detail",
+    "pages/mbook/water/add",
+    "pages/note/add/add",
+    "pages/note/list/list",
+    "pages/note/detail/detail",
+    "pages/card/add/add",
+    "pages/card/item/item"
   ],
   "window": {
     "backgroundTextStyle": "light",

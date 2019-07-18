@@ -21,8 +21,6 @@
   word-wrap: break-word;
 }
 
-
-
 .btns{
   position: fixed;
   bottom: 0;

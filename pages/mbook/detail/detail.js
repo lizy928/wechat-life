@@ -3,10 +3,6 @@
 const app = getApp();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     mdetail: null
   },
@@ -53,12 +49,10 @@ Page({
             data: { id: e.target.dataset.id },
             header: { 'content-type': 'application/json' },
             success: function (res) {
-
               wx.showToast({
                 title: '删除成功',
                 icon: 'success',
               });
-
               setTimeout(function () {
                 wx.switchTab({
                   url: '/pages/mbook/mbook',

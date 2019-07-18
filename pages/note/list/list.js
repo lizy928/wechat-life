@@ -1,6 +1,6 @@
 Page({
   data: {
-    delBtnWidth: 180//删除按钮宽度单位（rpx）
+    delBtnWidth: 180
   },
 
   onLoad: function (options) {

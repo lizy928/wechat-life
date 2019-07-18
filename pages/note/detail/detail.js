@@ -1,7 +1,6 @@
 // 笔记三要素： content（显示）, time（显示）, id（唯一标识）;
 // 新加： 三要素都更新，并且添加到storage中；
 // 编辑： 内容时间更新，id不变，修改storage中已存在项。
-
 var timeFunc = require("../../utils/util.js");
 Page({
   data: {
