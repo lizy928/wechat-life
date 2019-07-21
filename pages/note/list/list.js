@@ -130,67 +130,32 @@ Page({
   //测试临时数据
 
   tempData: function () {
-    var list = [
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "向左滑动可以删除"
-      },
-      {
-        txtStyle: "",
-       id:"2",
-        txt: "微信小程序|联盟（wxapp-union.com）"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "圣诞老人是爸爸，顺着烟囱往下爬，礼物塞满圣诞袜，平安糖果一大把"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "圣诞到来，元旦还会远吗？在圣诞这个日子里"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-      },
 
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
+    var that = this;
 
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "你的圣诞节礼物准备好了吗?"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "圣诞到来，元旦还会远吗？"
-      },
-      {
-        txtStyle: "",
-        id: "2",
-        txt: "记下这一刻的心情"
-      },
+    var list = [];
 
-    ];
-
+   //加载列表数据
+    wx.request({
+      url: 'http://localhost:9000/life-note/api/note?userId=4', //仅为示例，并非真实的接口地址
+      header: {
+        'content-type': 'application/json',
+        'token':'test-token'
+      },
+      success: function (res) {
+        console.log(res);
+        console.log(res.data.data)
+        if (res.data.code == 0){
+          that.setData({
+            list: res.data.data
+          });
+        }
+      },
+      fail: function (res) {
+        console.log("请求失败")
+      }
+    });
+    
     this.setData({
       list: list
     });

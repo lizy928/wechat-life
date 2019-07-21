@@ -7,13 +7,13 @@
     "pages/logs/logs",
     "pages/index/index",
     "pages/jf/jf",
-    "pages/card/detail/detail",
     "pages/mbook/water/add",
-    "pages/note/add/add",
+    "pages/card/detail/detail",
+    "pages/card/add/add",
+    "pages/card/item/item",
     "pages/note/list/list",
     "pages/note/detail/detail",
-    "pages/card/add/add",
-    "pages/card/item/item"
+    "pages/note/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",

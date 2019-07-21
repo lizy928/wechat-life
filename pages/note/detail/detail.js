@@ -4,7 +4,7 @@
 var timeFunc = require("../../utils/util.js");
 Page({
   data: {
-
+    content:''
   },
   onLoad: function (e) {
     var id = e.id;
@@ -34,20 +34,29 @@ Page({
   }
 })
 
-
-
 function initData(id, page) {
-  var lists = wx.getStorageSync('lists') || [];
-  lists.forEach(function (item, i) {
-    if (item.id == id) {
-      page.setData({
-        content: item.content,
-        time: timeFunc.formatTime(new Date()),
-        id: id,
-        isShow: false
-      })
+  //根据ID查询内容详情
+  wx.request({
+    url: 'http://localhost:9000/life-note/'+id, //仅为示例，并非真实的接口地址
+    header: {
+      'content-type': 'application/json',
+      'token': 'test-token'
+    },
+    success: function (res) {
+      console.log(url)
+      console.log(res);
+      if (res.data.code == 0) {
+        that.setData({
+          content: res.data.data.content
+        });
+      }
+    },
+    fail: function (res) {
+      console.log("请求失败")
     }
-  })
+  });
+
+
 }
 
 function saveData(page) {
