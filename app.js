@@ -15,23 +15,23 @@ App({
       
           that.globalData.code = res.code
 
-          that.getWxUserInfo(res.code);
+          that.getOpenId(res.code);
       }
     });
-    //that.getWxUserInfo();
     // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
+            lang: "zh_CN",
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               console.log("userinfo:" + res.userInfo.nickName)
               wx.setStorageSync('userInfo',res.userInfo)
-              console.log("cache"+wx.getStorageSync('userInfo').nickName)
-              this.saveUserInfo();
+              this.getSystemInfo();
+              
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -61,7 +61,8 @@ App({
           });
         }
       });
-    }    
+    };
+        
   },
 
   onReady: function () {
@@ -77,10 +78,11 @@ App({
     userInfo: null,
     apiurl: "http://chengyu.tooao.cn/",
     openId: "",
-    code: ""
+    code: "",
+    systemInfo: null
   },
 
-  getWxUserInfo:function(code){
+  getOpenId:function(code){
     var that = this;
     //var code = that.globalData.code;
     
@@ -96,22 +98,40 @@ App({
         console.log(res.data.data)
         if (res.data.code == 0) {
             that.globalData.openId = res.data.data.openId
-          console.log("global data openId:" + that.globalData.openId)
+          console.log("global data openId:" + that.globalData.openId);
+
+          that.getUserInfo();
         }
       },
       fail: function (res) {
-        console.log("请求失败")
+        console.log("请求失败getWxUserInfo")
       }
     });
 
   },
+  getSystemInfo: function() {
+    wx.getSystemInfo({
+      success: res => {
 
-  getUserInfo: function(openId){
+        console.log("获取到的系统信息：" + res.version)
 
+        wx.setStorageSync('systemInfo', res)
+
+      },
+      fail: res => {
+        console.log("获取系统信息失败")
+      },
+
+
+    });
+  },
+
+  getUserInfo: function(){
     var that = this;
+    var openId = that.globalData.openId;
     //查询用户信息
     wx.request({
-      url: 'http://localhost:9000/life-user/api/user?openId' + openId,
+      url: 'http://localhost:9000/life-user/api/user?openId=' + openId,
       header: {
         'content-type': 'application/json',
         'token': 'test-token'
@@ -133,11 +153,15 @@ App({
 
 //保存用户信息
   saveUserInfo: function(){
-   
     var that = this;
     var userInfo = wx.getStorageSync('userInfo');
+    var systemInfo = wx.getStorageSync('systemInfo');
+
     var openId = that.globalData.openId;
+
+    console.log("get from stroge"+openId)
     var data = {}
+    //封装用户信息
     data.openId = openId;
     data.nickName = userInfo.nickName;
     data.avatarUrl = userInfo.avatarUrl;
@@ -145,11 +169,19 @@ App({
     data.province = userInfo.province;
     data.city = userInfo.city;
     data.country = userInfo.country;
+    data.language = userInfo.language;
+    data.channel = 'wxmp';
+
+    data.brand = systemInfo.brand;
+    data.model = systemInfo.model;
+    data.wxLanguage = systemInfo.language;
+    data.system = systemInfo.system;
+    data.platform = systemInfo.platform;
 
     console.log("data:" + that.globalData.openId);
     wx.request({
       url: 'http://localhost:9000/life-user/api/user', //仅为示例，并非真实的接口地址
-      data: data,
+      data: data, method: "POST",
       header: {
         'content-type': 'application/json',
         'token': 'test-token'
@@ -159,27 +191,7 @@ App({
           title: '添加成功',
           icon: 'success',
         });
-
-        setTimeout(function () {
-          wx.navigateBack({
-            delta: 1,
-            success: function (e) {
-              var page = getCurrentPages().pop();
-              if (page == undefined || page == null) return;
-              page.onLoad();
-            },
-            fail: function (e) {
-              console.log(e);
-            }
-          })
-        }, 1000);
-
       }
     });
-
-
-
   }
-
-
 })
