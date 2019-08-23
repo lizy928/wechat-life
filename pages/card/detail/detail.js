@@ -14,9 +14,11 @@ Page({
   onLoad: function (options) {
     var obj = this;
     wx.request({
-      url: app.globalData.apiurl + 'mbook/getlist', //仅为示例，并非真实的接口地址
+      url: 'http://localhost:9000/life-mbook/api/account/listAccount?userId=1', //仅为示例，并非真实的接口地址
       data: { user: app.globalData.openid },
-      header: { 'content-type': 'application/json' },
+      header: { 'content-type': 'application/json',
+      'token':'sfesf'
+       },
       success: function (res) {
         console.log(res.data);
         obj.setData({
@@ -32,7 +34,7 @@ Page({
     //   url: '/pages/card/add/add?id=0'
     // });
     wx.navigateTo({
-      url: '../../card/add/add'
+      url: '../../card/item/item'
     });
   },
 

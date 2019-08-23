@@ -17,7 +17,7 @@ Page({
 
   sltcarditem: function (e) {
     wx.navigateTo({
-      url: '/pages/cards/addcard?id=0&carditem=' + e.currentTarget.dataset.item
+      url: '/pages/card/add/add?id=0&carditem=' + e.currentTarget.dataset.item
     });
   },
   /**

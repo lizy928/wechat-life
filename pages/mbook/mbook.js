@@ -66,32 +66,32 @@ Page({
     console.log("加载默认数据");
 
     wx.request({
-      url: app.siteInfo.apiurl + '/mbook/GetMoneyWater', //仅为示例，并非真实的接口地址
+      url: 'http://localhost:9000/life-mbook/api/water', //仅为示例，并非真实的接口地址
       data: {
-        user: app.globalData.openid,
-        yearmonth: obj.data.yearmonth,
+        userId: 1
       },
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'token':'test'
       },
       success: function (res) {
         obj.setData({
           reload: "none",
         });
-        if (res.data.message.length == 0) {
+        if (res.data.data.message.length == 0) {
           obj.setData({
             xljt: "block",
           });
         } else {
           obj.setData({
-            xljt: "none",
+            xljt: "none",  //none
           });
         }
         obj.setData({
-          list: res.data.message,
-          jieyu: res.data.jieyu,
-          sumin: res.data.sumin,
-          sumout: res.data.sumout,
+          list: res.data.data.message,
+          jieyu: res.data.data.jieyu,
+          sumin: res.data.data.sumin,
+          sumout: res.data.data.sumout,
         });
         // 隐藏导航栏加载框  
         wx.hideNavigationBarLoading();

@@ -8,9 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openid: "",
+    userId: 1,
     cardinfo: null,
-    cardtype: 0,
+    accountType: 0,
     cardimg: 'cards',
     gded_txt: '余额',
     gded_hide: 'none',
@@ -31,8 +31,8 @@ Page({
     var obj = this;
 
     obj.setData({
-      openid: app.globalData.openid,
-      cardtype: options.carditem
+      openid: 'onCAd5Pn1Q55MiSDpAi_NwFIa7WE',
+      accountType: options.carditem
     });
 
     if (options.id > 0) {
@@ -123,8 +123,10 @@ Page({
             data: {
               cardid: e.target.dataset.cardid
             },
+            method: "POST",
             header: {
-              'content-type': 'application/json'
+              'content-type': 'application/json',
+              'token':'sfesf'
             },
             success: function (res) {
               wx.showToast({
@@ -157,6 +159,7 @@ Page({
   // 表单提交
   formSubmit: function (e) {
     var info = e.detail.value;
+    info.userId = 1;
     var bool = true;
 
     wx.showLoading({
@@ -177,10 +180,12 @@ Page({
 
     if (bool) {
       wx.request({
-        url: app.siteInfo.apiurl + 'mbook/SaveCard', //仅为示例，并非真实的接口地址
+        url: 'http://localhost:9000/life-mbook/api/account/', //仅为示例，并非真实的接口地址
         data: e.detail.value,
+        method: "POST",
         header: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'token':'sfe'
         },
         success: function (res) {
           wx.hideLoading();

@@ -10,7 +10,7 @@
           账户名称
         </view>
         <view class='t-item-right'>
-          <input name='cardname' placeholder="账户名称" maxlength="10" value='{{cardinfo.cardname}}' auto-focus/>
+          <input name='name' placeholder="账户名称" maxlength="10" value='{{cardinfo.cardname}}' auto-focus/>
         </view>
       </view>
       <view class="t-item" style='display:{{gded_hide}};'>
@@ -18,7 +18,7 @@
           固定额度
         </view>
         <view class='t-item-right'>
-          <input name='gudingmoney' type="digit" placeholder="0.00" value='{{cardinfo.gudingmoney}}' maxlength="10" />
+          <input name='amount' type="digit" placeholder="0.00" value='{{cardinfo.gudingmoney}}' maxlength="10" />
         </view>
       </view>
       <view class="t-item" style='display:{{yyed_hide}};'>
@@ -26,7 +26,7 @@
           已用额度
         </view>
         <view class='t-item-right'>
-          <input name='yiyongmoney' type="digit" placeholder="已用额度" value='{{cardinfo.yiyongmoney}}' maxlength="10" />
+          <input name='userdAmount' type="digit" placeholder="已用额度" value='{{cardinfo.yiyongmoney}}' maxlength="10" />
         </view>
       </view>
       <view class="t-item" style='display:{{kyed_hide}};'>
@@ -34,7 +34,7 @@
           {{gded_txt}}
         </view>
         <view class='t-item-right'>
-          <input name='keyongmoney' type="digit" placeholder="可用额度" value='{{cardinfo.keyongmoney}}' />
+          <input name='usableAmount' type="digit" placeholder="可用额度" value='{{cardinfo.keyongmoney}}' />
         </view>
       </view>
       <view class="t-item" style='display:{{zdr_hide}};'>
@@ -42,7 +42,7 @@
           账单日
         </view>
         <view class='t-item-right'>
-          <input name='zhangdanri' type="number" maxlength='2' placeholder="账单日" value='{{cardinfo.zhangdanri}}' />
+          <input name='billingDay' type="number" maxlength='2' placeholder="账单日" value='{{cardinfo.zhangdanri}}' />
         </view>
       </view>
       <view class="t-item" style='display:{{hkr_hide}};'>
@@ -50,7 +50,7 @@
           还款日
         </view>
         <view class='t-item-right'>
-          <input name='huikuanri' type="number" maxlength='2' placeholder="还款日" value='{{cardinfo.huikuanri}}' />
+          <input name='repaymentDate' type="number" maxlength='2' placeholder="还款日" value='{{cardinfo.huikuanri}}' />
         </view>
       </view>
       <view class="t-item" style='display:{{yhkh_hide}};'>
@@ -58,7 +58,7 @@
           卡号
         </view>
         <view class='t-item-right'>
-          <input name='weihao' type="number" maxlength='4' placeholder="请填写卡号后四位" value='{{cardinfo.weihao}}' />
+          <input name='cardNum' type="number" maxlength='4' placeholder="请填写卡号后四位" value='{{cardinfo.weihao}}' />
         </view>
       </view>
       <view class="t-item">
@@ -87,7 +87,7 @@
       <view class="hide">
         <input name='user' value='{{openid}}' />
         <input name='id' value='{{cardinfo.id}}' />
-        <input name='type' value='{{cardtype}}' />
+        <input name='accountType' value='{{accountType}}' />
       </view>
     </form>
   </view>

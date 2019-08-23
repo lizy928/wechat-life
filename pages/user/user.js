@@ -33,17 +33,18 @@ Page({
   reload: function () {
     var obj = this;
     wx.request({
-      url: app.siteInfo.apiurl + '/mbook/getuserhome?openid=' + app.globalData.openid,
+      url: 'http://localhost:9000/life-mbook/api/account/getUserAccount?userId=1',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'token':'sfesf'
       },
       success: function (res) {
         console.log(res);
         obj.setData({
-          jifen: res.data.jifen,
-          lianxuday: res.data.lianxuday,
-          sumcount: res.data.sumcount,
-          sumday: res.data.sumday
+          jifen: res.data.data.jifen,
+          lianxuday: res.data.data.lianxuday,
+          sumcount: res.data.data.sumcount,
+          sumday: res.data.data.sumday
         })
       }
     })

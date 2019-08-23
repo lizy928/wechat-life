@@ -77,7 +77,7 @@ App({
   globalData: {
     userInfo: null,
     apiurl: "http://chengyu.tooao.cn/",
-    openId: "",
+    openId: "onCAd5Pn1Q55MiSDpAi_NwFIa7WE",
     code: "",
     systemInfo: null
   },
@@ -181,7 +181,8 @@ App({
     console.log("data:" + that.globalData.openId);
     wx.request({
       url: 'http://localhost:9000/life-user/api/user', //仅为示例，并非真实的接口地址
-      data: data, method: "POST",
+      data: data, 
+      method: "POST",
       header: {
         'content-type': 'application/json',
         'token': 'test-token'
