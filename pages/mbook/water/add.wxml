@@ -59,7 +59,6 @@
     </view>
     <view class="hide">
       <input name='user' value='{{_openid}}' />
-      <input name='id' value='{{id}}' />
       <input name='type' value='{{nav_item}}' />
       <input name='tag' value='{{nav_name}}' />
       <input name='tagimg' value='{{nav_icon}}' />

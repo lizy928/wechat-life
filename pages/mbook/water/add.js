@@ -169,11 +169,12 @@ Page({
 
     // 获取卡片详情
     wx.request({
-      url: app.siteInfo.apiurl + '/mbook/GetCardList',
+      url: 'http://localhost:9000/life-mbook/api/account/listAccount?userId=1',
       data: { user: app.globalData.openid },
-      header: { 'content-type': 'application/json' },
+      header: { 'content-type': 'application/json',
+      'token':'sfesf' },
       success: function (res) {
-        var cardlist = res.data.message;
+        var cardlist = res.data.data;
         //console.log(cardlist);
         var _cardarray = [];
         _cardarray.push({
@@ -185,7 +186,7 @@ Page({
           _cardarray.push({
             id: i + 1,
             value: cardlist[i].id,
-            name: cardlist[i].cardname
+            name: cardlist[i].name
           });
         }
         obj.setData({
@@ -282,7 +283,7 @@ Page({
     if (bool) {
       console.log(e.detail.value);
       wx.request({
-        url: app.siteInfo.apiurl + '/mbook/savemoneywater?formid=' + formid,
+        url: 'http://localhost:9000/life-mbook/api/account/listAccount?userId=1'+'?formid=' + formid,
         data: e.detail.value,
         header: { 'content-type': 'application/json' },
         success: function (res) {
