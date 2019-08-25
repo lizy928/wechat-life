@@ -16,7 +16,7 @@
       <label class='jz-t-text'>{{nav_name}}</label>
     </view>
     <view class='jz-input-box'>
-      <input type='digit' name='money' class='jz-input' placeholder="0.00" value='{{money}}' auto-focus/>
+      <input type='digit' name='amount' class='jz-input' placeholder="0.00" value='{{amount}}' auto-focus/>
     </view>
   </view>
   <view class='content'>
@@ -59,12 +59,12 @@
     </view>
     <view class="hide">
       <input name='user' value='{{_openid}}' />
-      <input name='type' value='{{nav_item}}' />
+      <input name='changeType' value='{{nav_item}}' />
       <input name='tag' value='{{nav_name}}' />
       <input name='tagimg' value='{{nav_icon}}' />
-      <input name='tagid' value='{{tagid}}' />
+      <input name='consumptionType' value='{{tagid}}' />
       <input name='date' value='{{date}}' />
-      <input name='cardid' value='{{cardid}}' />
+      <input name='accountId' value='{{cardid}}' />
     </view>
   </view>
 </form>

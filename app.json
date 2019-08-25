@@ -8,6 +8,7 @@
     "pages/index/index",
     "pages/jf/jf",
     "pages/mbook/water/add",
+    "pages/mbook/detail/detail",
     "pages/card/detail/detail",
     "pages/card/add/add",
     "pages/card/item/item",

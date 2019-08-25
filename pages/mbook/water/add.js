@@ -17,7 +17,7 @@ Page({
     nav_icon: '',
     nav_name: '',
     tagid: 0,
-    money: '',
+    amount: '',
     remark: '',
     iconlist: {},
     date: util.formatDate(new Date),
@@ -253,7 +253,7 @@ Page({
     obj.setData({
       nav_icon: e.currentTarget.dataset.tagicon,
       nav_name: e.currentTarget.dataset.tagname,
-      tagid: e.currentTarget.dataset.tagid,
+      consumptionType: e.currentTarget.dataset.tagid,
       tag_action_id: e.currentTarget.dataset.tagid,
       tag_action_color: e.currentTarget.dataset.tagcolor,
     });
@@ -264,7 +264,7 @@ Page({
     var obj = this;
     // 参数
     var info = e.detail.value;
-    console.log(info);
+    console.log('要提交的数据：'+info);
     var bool = true;
     // 按钮属性
     var _btnsive = e.detail.target.dataset.btn;
@@ -281,11 +281,13 @@ Page({
     }
 
     if (bool) {
-      console.log(e.detail.value);
+      console.log('要提交的数据：' + e.detail.value);
       wx.request({
-        url: 'http://localhost:9000/life-mbook/api/account/listAccount?userId=1'+'?formid=' + formid,
+        url: 'http://localhost:9000/life-mbook/api/water',
         data: e.detail.value,
-        header: { 'content-type': 'application/json' },
+        method: "POST",
+        header: { 'content-type': 'application/json' ,
+        'token':'sfesfe'},
         success: function (res) {
 
           console.log(res.data);
